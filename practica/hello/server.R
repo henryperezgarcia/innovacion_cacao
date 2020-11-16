@@ -21,9 +21,16 @@ shinyServer(function(input, output) {
     
     conn <- dbConnect(RPostgres::Postgres(), dbname=db, host=host_db, user=db_user, password=db_password)
     
-    creci <- dbSendQuery(conn,'select * from crecimiento')
-    cre <- dbFetch(creci)
-    plot( cre$mes,cre$tamanio, main=input$txt_titulo)
+    
+    if(input$radio==1){
+      creci <- dbSendQuery(conn,'select * from crecimiento where id_planta =1')
+      cre <- dbFetch(creci)
+      plot( cre$mes,cre$tamanio, main=input$txt_titulo)
+    }else{
+      creci <- dbSendQuery(conn,'select * from crecimiento where id_planta =2')
+      cre <- dbFetch(creci)
+      plot( cre$mes,cre$tamanio, main=input$txt_titulo)
+    }
     
   })
 
