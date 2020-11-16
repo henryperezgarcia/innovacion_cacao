@@ -19,7 +19,7 @@ color <- dat$color[2]
 shinyUI(fluidPage(
   
   # Application title
-  titlePanel("Cacao"),
+  titlePanel("Cacaos"),
   
   # Sidebar with a slider input for number of observations
   sidebarLayout(
